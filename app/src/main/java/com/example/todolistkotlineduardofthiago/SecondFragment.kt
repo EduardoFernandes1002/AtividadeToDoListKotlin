@@ -11,7 +11,7 @@ import com.example.todolistkotlineduardofthiago.databinding.FragmentSecondBindin
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class ThirdFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
 
