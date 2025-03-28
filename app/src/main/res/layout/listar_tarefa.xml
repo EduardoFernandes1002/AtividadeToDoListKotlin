@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    android:id="@+id/ListarTarefa"
+    tools:context=".ListarTarefaFragment">
 
     <Button
         android:id="@+id/btnAddTarefa"
@@ -34,8 +35,12 @@
         android:id="@+id/ListaT"
         android:layout_width="409dp"
         android:layout_height="619dp"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="16dp"
         android:background="#5CA6CACA"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="44dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnAddTarefa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

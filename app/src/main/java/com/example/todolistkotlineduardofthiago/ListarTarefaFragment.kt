@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.todolistkotlineduardofthiago.databinding.FragmentFirstBinding
+import com.example.todolistkotlineduardofthiago.databinding.ListarTarefaBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class ListarTarefaFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: ListarTarefaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +24,7 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = ListarTarefaBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,7 +33,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnAddTarefa.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_ThirdFragment)
+            findNavController().navigate(R.id.action_ListarTarefa_para_EditarTarefa)
         }
     }
 

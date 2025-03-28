@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/ListarTarefa">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.todolistkotlineduardofthiago.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/ListarTarefa"
+        android:name="com.example.todolistkotlineduardofthiago.ListarTarefaFragment"
+        android:label="@string/listar_tarefa_label"
+        tools:layout="@layout/listar_tarefa">
 
         <action
-            android:id="@+id/action_FirstFragment_to_ThirdFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_ListarTarefa_para_EditarTarefa"
+            app:destination="@id/EditarTarefa" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.todolistkotlineduardofthiago.ThirdFragment"
-        android:label="@string/third_fragment_label"
-        tools:layout="@layout/fragment_third">
+        android:id="@+id/EditarTarefa"
+        android:name="com.example.todolistkotlineduardofthiago.EditarTarefaFragment"
+        android:label="@string/editar_tarefa_label"
+        tools:layout="@layout/editar_tarefa">
 
         <action
-            android:id="@+id/action_ThirdFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_EditTarefa_para_ListarTarefa"
+            app:destination="@id/ListarTarefa" />
     </fragment>
 </navigation>
