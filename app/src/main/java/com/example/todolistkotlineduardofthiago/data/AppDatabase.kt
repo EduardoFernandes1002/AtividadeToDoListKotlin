@@ -1,4 +1,4 @@
-package data
+package com.example.todolistkotlineduardofthiago.data
 
 import android.content.Context
 import androidx.room.Database
@@ -18,7 +18,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "autistalk_database"
+                    "todolistkotlineduardofthiago_database"
                 ).build()
                 Companion.instance = instance
                 instance

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ListarTarefa"
-        android:name="com.example.todolistkotlineduardofthiago.ListarTarefaFragment"
+        android:name="com.example.todolistkotlineduardofthiago.view.ListarTarefaFragment"
         android:label="@string/listar_tarefa_label"
         tools:layout="@layout/listar_tarefa">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/EditarTarefa"
-        android:name="com.example.todolistkotlineduardofthiago.EditarTarefaFragment"
+        android:name="com.example.todolistkotlineduardofthiago.view.EditarTarefaFragment"
         android:label="@string/editar_tarefa_label"
         tools:layout="@layout/editar_tarefa">
 

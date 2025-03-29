@@ -1,59 +1,50 @@
 package com.example.todolistkotlineduardofthiago
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import com.example.todolistkotlineduardofthiago.databinding.ActivityMainBinding
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.todolistkotlineduardofthiago.data.Tarefa
+import com.example.todolistkotlineduardofthiago.view.MainViewModel
+import com.example.todolistkotlineduardofthiago.view.MainViewModelFactory
+import com.example.todolistkotlineduardofthiago.view.TarefaAdapter
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var viewModel: MainViewModel
+    private lateinit var adapter: TarefaAdapter
+    private lateinit var recyclerView: RecyclerView
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    private var originalTarefaList: List<Tarefa> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        viewModel = ViewModelProvider(this, MainViewModelFactory(application))[MainViewModel::class.java]
 
-        setSupportActionBar(binding.toolbar)
+        recyclerView = findViewById(R.id.ListaT)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        adapter = TarefaAdapter(viewModel)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }
+        viewModel.getAllTarefas()
+
+        viewModel.tarefas.observe(this, Observer { tarefas ->
+            originalTarefaList = tarefas
+            adapter.submitList(tarefas)
+        })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
+    override fun onResume() {
+        super.onResume()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+        viewModel.getAllTarefas()
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        viewModel.tarefas.observe(this, Observer { tarefas ->
+            adapter.submitList(tarefas)
+        })
     }
 }
