@@ -22,11 +22,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this, MainViewModelFactory(application))[MainViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, MainViewModelFactory(application))[MainViewModel::class.java]
 
         recyclerView = findViewById(R.id.ListaT)
 
-        adapter = TarefaAdapter(viewModel)
+        adapter = TarefaAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 

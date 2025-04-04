@@ -1,5 +1,6 @@
 package com.example.todolistkotlineduardofthiago.view
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistkotlineduardofthiago.R
 import com.example.todolistkotlineduardofthiago.data.Tarefa
 
-class TarefaAdapter(private val viewModel: MainViewModel) : RecyclerView.Adapter<TarefaAdapter.ViewHolder>() {
+class TarefaAdapter : RecyclerView.Adapter<TarefaAdapter.ViewHolder>() {
     private val tarefas = mutableListOf<Tarefa>()
+
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.visualizar_tarefa, parent, false)
+        context = parent.context
         return ViewHolder(view)
     }
 
@@ -21,8 +25,9 @@ class TarefaAdapter(private val viewModel: MainViewModel) : RecyclerView.Adapter
         val tarefa = tarefas[position]
         holder.tarefaTextTextView.text = tarefa.tx_titulo
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, TarefaAdapter::class.java)
+            val intent = Intent(holder.itemView.context, EditarTarefaFragment::class.java)
             intent.putExtra("tarefa_id", tarefa.id_tarefa)
+            //context.applicationContext
             holder.itemView.context.startActivity(intent)
         }
     }
