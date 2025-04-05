@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistkotlineduardofthiago.R
 import com.example.todolistkotlineduardofthiago.data.Tarefa
@@ -25,12 +27,14 @@ class TarefaAdapter : RecyclerView.Adapter<TarefaAdapter.ViewHolder>() {
         val tarefa = tarefas[position]
         holder.tarefaTextTextView.text = tarefa.tx_titulo
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, EditarTarefaFragment::class.java)
+            val intent = Intent(holder.itemView.context, EditarTarefaActivity::class.java)
             intent.putExtra("tarefa_id", tarefa.id_tarefa)
-            //context.applicationContext
-            holder.itemView.context.startActivity(intent)
+            val localAppCompat = context as AppCompatActivity
+
+            localAppCompat.findNavController(R.id.action_ListarTarefa_para_EditarTarefa)
         }
     }
+
 
     override fun getItemCount(): Int {
         return tarefas.size

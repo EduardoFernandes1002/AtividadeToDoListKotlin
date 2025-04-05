@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".view.EditarTarefaActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ToDoListKotlinEduardoFThiago">
+        </activity>
     </application>
 
 </manifest>

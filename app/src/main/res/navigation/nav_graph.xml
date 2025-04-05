@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/EditarTarefa"
-        android:name="com.example.todolistkotlineduardofthiago.view.EditarTarefaFragment"
+        android:name="com.example.todolistkotlineduardofthiago.view.EditarTarefaActivity"
         android:label="@string/editar_tarefa_label"
         tools:layout="@layout/editar_tarefa">
 

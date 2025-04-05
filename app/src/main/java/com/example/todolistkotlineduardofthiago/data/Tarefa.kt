@@ -9,4 +9,4 @@ data class Tarefa(
     var id_tarefa: Int = 0,
     var tx_titulo: String,
     var tx_descricao: String,
-    var bl_checkbox: Boolean)
+    var bl_checkbox: Boolean = false)

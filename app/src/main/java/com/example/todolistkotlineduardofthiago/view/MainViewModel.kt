@@ -35,8 +35,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun getTarefaByTarefaId(tarefaId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val card = tarefaRepository.getTarefaByTarefaId(tarefaId)
-                _tarefas.postValue(listOf(card))
+                val tarefa = tarefaRepository.getTarefaByTarefaId(tarefaId)
+                _tarefas.postValue(listOf(tarefa))
             } catch (_: Exception) {
             }
         }

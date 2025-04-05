@@ -1,12 +1,15 @@
 package com.example.todolistkotlineduardofthiago
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistkotlineduardofthiago.data.Tarefa
+import com.example.todolistkotlineduardofthiago.view.EditarTarefaActivity
 import com.example.todolistkotlineduardofthiago.view.MainViewModel
 import com.example.todolistkotlineduardofthiago.view.MainViewModelFactory
 import com.example.todolistkotlineduardofthiago.view.TarefaAdapter
@@ -37,6 +40,13 @@ class MainActivity : AppCompatActivity() {
             originalTarefaList = tarefas
             adapter.submitList(tarefas)
         })
+
+        val addBtn = findViewById<Button>(R.id.btnAddTarefa)
+
+        addBtn.setOnClickListener {
+            startActivity(Intent(this, EditarTarefaActivity::class.java))
+            
+        }
     }
 
     override fun onResume() {
